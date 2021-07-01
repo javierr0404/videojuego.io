@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Actividad 1</title>
+	<style>
+		body {
+			color: white;
+			background-color: #641E16;
+			width: 100%;
+			margin: 10 auto;
+			padding: 10px;
+		}
+
+		#Nombre_Canvas {
+			border: 10px ridge #7B241C;
+			background: rgb(30, 180, 30);
+		}
+	</style>
+	<script>
+		window.onload = function () {
+			var canvas = document.getElementById("Nombre_Canvas");
+			if (canvas && canvas.getContext) {
+				var ctx = canvas.getContext("2d");
+				if (ctx) {
+					//Creación de tono degradado en grises
+					var gradiente = ctx.createLinearGradient(0, 0, 0, canvas.height);
+					gradiente.addColorStop(0, "#E6B0AA");
+					gradiente.addColorStop(0.5, "#D98880");
+					gradiente.addColorStop(0.8, "#CD6155");
+					gradiente.addColorStop(1, "#C0392B");
+
+					ctx.fillStyle = gradiente;
+					ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+					//Agregar imagen
+					var imagen = new Image();
+					function procesaImagen() {
+						ctx.drawImage(imagen, 50, 10, 100, 100);
+					}
+					//
+					imagen.src = "imagenes/javier.jpg";
+					imagen.onload = function (e) {
+						procesaImagen();
+					}
+
+					//Agregar las letras dibujadas
+
+					// E
+					ctx.moveTo(150, 150);
+					ctx.lineTo(150, 250);
+					ctx.moveTo(150, 150);
+					ctx.lineTo(195, 150);
+					ctx.moveTo(150, 200);
+					ctx.lineTo(195, 200);
+					ctx.moveTo(150, 250);
+					ctx.lineTo(195, 250);
+					ctx.stroke();
+
+					ctx.moveTo(240, 150);
+					ctx.lineTo(240, 250);
+					ctx.moveTo(215, 150);
+					ctx.lineTo(240, 150);
+					ctx.moveTo(210, 250);
+					ctx.lineTo(240, 250);
+					ctx.moveTo(210, 220);
+					ctx.lineTo(210, 250);
+					ctx.stroke();
+
+					ctx.beginPath();
+					ctx.lineTo(249, 250);
+					ctx.arc(260, 176, 25, 1.4 * Math.PI, 2.6 * Math.PI);
+					ctx.lineTo(280, 245);
+					ctx.stroke();
+
+
+
+
+				} else {
+					alert("Error al crear tu contexto");
+				}
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<h2>Actividad 1 <a href="space.html">Clic aqui</a></h1>
+		<canvas id="Nombre_Canvas" width="900px" height="650px">
+			Tu navegador no soporta CANVAS
+		</canvas>
+</body>
+
+</html>
